@@ -12,6 +12,11 @@ if (cluster.isPrimary) {
     console.log("RIP:", worker.process.pid)
     cluster.fork()
   });
+
+  if (process.argv.includes("-debug")) {
+    require('./watch')
+  }
+
 } else {
   console.log("WORKER:", process.pid)
   require("./worker")
