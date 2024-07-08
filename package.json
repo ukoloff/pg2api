@@ -1,4 +1,5 @@
 {
+  "main": "src",
   "dependencies": {
     "pg": "^8.12.0"
   },
