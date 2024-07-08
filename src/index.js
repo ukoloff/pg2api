@@ -9,6 +9,7 @@ if (cluster.isPrimary) {
   }
 
   cluster.on('exit', (worker, code, signal) => {
+    console.log("RIP:", worker.process.pid)
     cluster.fork()
   });
 } else {
