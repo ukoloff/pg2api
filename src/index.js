@@ -1,1 +1,1 @@
-console.log('Hello, world!')
+require(process.argv.includes("-debug") ? "./cluster" : "./worker")
