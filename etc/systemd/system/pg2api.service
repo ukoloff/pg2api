@@ -1,0 +1,12 @@
+[Unit]
+Description=PostgreSQL HTTP API
+After=network.target
+
+[Service]
+ExecStart=node .
+WorkingDirectory=/home/pg2api/pg2api
+User=pg2api
+Group=pg2api
+
+[Install]
+WantedBy=multi-user.target
