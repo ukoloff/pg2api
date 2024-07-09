@@ -6,8 +6,8 @@ http.createServer((req, res) => {
   read(req)
     .then(JSON.parse)
     .then(j => ({
-      got: j,
       hello: 'World!',
+      got: j,
       pid: process.pid,
     }))
     .catch(e => ({
