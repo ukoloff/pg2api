@@ -1,8 +1,16 @@
 const http = require('node:http')
 
-http.get('http://localhost:5432', get)
+var send = {
+  preved: 'Медвед!',
+  pid: process.pid,
+}
 
-function get(res) {
+http.request('http://localhost:5432', {
+  method: 'POST'
+}, got)
+  .end(JSON.stringify(send))
+
+function got(res) {
   console.log('GOT!')
   console.log('Status:', res.statusCode)
   console.log('Headers:', res.headers)
