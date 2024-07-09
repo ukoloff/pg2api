@@ -2,7 +2,7 @@ const http = require('node:http')
 
 http.createServer((req, res) => {
   res.setHeader('Content-Type', 'application/json')
-  res.writeHead(200)
+  // res.writeHead(200)
   var out = {
     hello: 'World!',
     pid: process.pid,
