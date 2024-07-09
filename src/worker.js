@@ -3,6 +3,14 @@ const http = require('node:http')
 http.createServer((req, res) => {
   res.setHeader('Content-Type', 'application/json')
   // res.writeHead(200)
+
+  if (req.method != 'POST') {
+    res.setHeader('Location', 'https://github.com/ukoloff/pg2api')
+    res.writeHead(301)
+    res.end()
+    return
+  }
+
   read(req)
     .then(JSON.parse)
     .then(j => ({
