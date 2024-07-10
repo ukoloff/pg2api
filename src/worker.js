@@ -51,7 +51,7 @@ async function process(data) {
   res.ms = {
     connect: tB - tA,
     query: tC - tB,
-    close: tD - tD,
+    close: tD - tC,
   }
   return res
 }
