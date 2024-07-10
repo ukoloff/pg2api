@@ -33,7 +33,7 @@ function read(stream) {
 }
 
 async function process(data) {
-  var c = new pg.Client(data.connect)
+  var c = new pg.Client({application_name: 'pg2api.js', ...data.connect})
   var tA = new Date
   await c.connect()
   var tB = new Date
