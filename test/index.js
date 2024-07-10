@@ -37,8 +37,5 @@ function pgCred() {
     host: process.env.PGHOST || 'localhost',
     port: process.env.PGPORT || 5432,
     database: process.env.PGDATABASE || user,
-    ssl: {
-      rejectUnauthorized: false,
-    }
   }
 }

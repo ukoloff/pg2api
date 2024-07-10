@@ -1,6 +1,13 @@
 const http = require('node:http')
 const pg = require('pg')
 
+const connect = {
+  application_name: 'pg2api.js',
+  ssl: {
+    rejectUnauthorized: false,
+  },
+}
+
 http.createServer((req, res) => {
   res.setHeader('Content-Type', 'application/json')
   // res.writeHead(200)
@@ -33,7 +40,7 @@ function read(stream) {
 }
 
 async function process(data) {
-  var c = new pg.Client({application_name: 'pg2api.js', ...data.connect})
+  var c = new pg.Client({ ...connect, ...data.connect })
   var tA = new Date
   await c.connect()
   var tB = new Date
