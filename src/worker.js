@@ -34,9 +34,18 @@ function read(stream) {
 
 async function process(data) {
   var c = new pg.Client(data.connect)
+  var tA = new Date
   await c.connect()
+  var tB = new Date
   var res = await c.query(data.sql, data.values)
+  var tC = new Date
   await c.end()
+  var tD = new Date
+  res.ms = {
+    connect: tB - tA,
+    query: tC - tB,
+    close: tD - tD,
+  }
   return res
 }
 
