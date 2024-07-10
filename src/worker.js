@@ -14,11 +14,7 @@ http.createServer((req, res) => {
 
   read(req)
     .then(JSON.parse)
-    .then(j => ({
-      hello: 'World!',
-      got: j,
-      pid: process.pid,
-    }))
+    .then(process)
     .catch(e => ({
       error: e.name,
       message: e.message
@@ -33,4 +29,11 @@ function read(stream) {
     stream.on('data', chunk => body += chunk)
     stream.on('end', _ => resolve(body))
   })
+}
+
+async function process(data) {
+  var c = new pg.Client(data.connect)
+  await c.connect()
+  var s = await c.query(data.sql)
+  return s
 }
