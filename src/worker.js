@@ -36,6 +36,7 @@ async function process(data) {
   var c = new pg.Client(data.connect)
   await c.connect()
   var res = await c.query(data.sql, data.values)
+  await c.end()
   return res
 }
 
