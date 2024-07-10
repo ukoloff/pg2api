@@ -3,7 +3,8 @@ require('dotenv/config')
 
 var send = {
   connect: pgCred(),
-  sql: 'Select now()'
+  sql: 'Select * from pg_database Limit $1',
+  values: [2],
 }
 
 http.request('http://localhost:5432', {
