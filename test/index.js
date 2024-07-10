@@ -3,8 +3,8 @@ require('dotenv/config')
 
 var send = {
   connect: pgCred(),
-  sql: 'Select * from pg_database Limit $1',
-  values: [2],
+  sql: 'Select * from pg_database Where datname Like $1',
+  values: ['p%'],
 }
 
 http.request('http://localhost:5432', {

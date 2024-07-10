@@ -15,6 +15,7 @@ http.createServer((req, res) => {
   read(req)
     .then(JSON.parse)
     .then(process)
+    .then(omit_)
     .catch(e => ({
       error: e.name,
       message: e.message
@@ -36,4 +37,11 @@ async function process(data) {
   await c.connect()
   var res = await c.query(data.sql, data.values)
   return res
+}
+
+function omit_(data) {
+  Object.keys(data)
+    .filter(x => /^_/.test(x))
+    .forEach(x => delete data[x])
+  return data
 }
